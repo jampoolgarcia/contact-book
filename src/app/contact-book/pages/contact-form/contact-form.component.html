@@ -1,0 +1,55 @@
+<div class="card mb-4">
+    <div class="card-header">
+      <h2>Contact Form</h2>
+    </div>
+    <div class="card-body">
+      <form>
+          <div class="row my-4">
+              <div class="col-md-6 form-group">
+                <label for="firstName">FirstName</label>
+                <input type="text" class="form-control" placeholder="Enter first name..." minlength="3" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="lastName">LastName</label>
+                <input type="text" class="form-control" placeholder="Enter last name..." minlength="3" required>
+              </div>
+          </div>
+
+          <div class="row my-4">
+            <div class="col-md-6 col-12">
+                <label for="sex" class="text-muted">Sex</label>
+                <select class="form-control" [ngClass]="{'muted-color': false}">
+                    <option selected>Choose...</option>
+                    <option value="man">Man</option>
+                    <option value="woman">Woman</option> 
+                </select>
+            </div>
+            <div class="col-md-6 col-12">
+                <label for="company">Company</label>
+                <input type="text" placeholder="Enter company..." class="form-control">
+            </div>
+          </div>
+
+          <div class="row my-4">
+            <div class="col-md-6 col-12">
+                <label for="phone">Phone</label>
+                <input type="tel" placeholder="Enter phone number..." class="form-control">
+            </div>
+            <div class="col-md-6 col-12">
+                <label for="email">Email</label>
+                <input type="email" placeholder="Enter email..." class="form-control">
+            </div>
+          </div>
+
+          <div class="row my-4">
+            <div class="col-12">
+                <label for="address">Address</label>
+                <textarea class="form-control" maxlength="50" placeholder="Enter contact address..."></textarea>
+            </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer d-flex justify-content-end">
+        <button class="btn btn-primary">Send</button>
+    </div>
+  </div>
