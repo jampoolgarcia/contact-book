@@ -5,5 +5,5 @@ export interface ContactI {
     company: string;
     phone: string;
     email: string;
-    addres: string;
+    address: string;
 }

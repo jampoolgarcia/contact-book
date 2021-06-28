@@ -6,6 +6,10 @@
     z-index: 1071;
 }
 
+.primary {
+    color: rgb(13, 110, 253) !important;
+}
+
 .muted-color {
     color: #6c757d !important;
 }

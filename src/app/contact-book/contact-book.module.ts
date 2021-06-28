@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 // components
 import { ContactsComponent } from './pages/contacts/contacts.component';
 import { ContactFormComponent } from './pages/contact-form/contact-form.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ContactFormComponent } from './pages/contact-form/contact-form.componen
     ContactFormComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
   ],
   exports: [
     ContactsComponent,

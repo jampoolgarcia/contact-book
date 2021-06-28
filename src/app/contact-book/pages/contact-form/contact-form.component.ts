@@ -10,11 +10,25 @@ import { ContactI } from '../../interface/contact';
 export class ContactFormComponent implements OnInit {
 
 
-  constructor() { 
+  public contact: ContactI;
 
+  constructor() { 
+    this.contact = {
+      firstName: '',
+      lastName: '',
+      sex: '',
+      company: '',
+      phone: '',
+      email: '',
+      address: ''
+    }
   }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(){
+    console.log(this.contact);
   }
 
 }
