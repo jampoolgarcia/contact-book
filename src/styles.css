@@ -17,3 +17,7 @@
 .muted-color {
     color: #6c757d !important;
 }
+
+.form {
+    max-width: 800px !important;
+}

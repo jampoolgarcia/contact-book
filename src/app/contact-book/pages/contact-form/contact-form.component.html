@@ -1,10 +1,8 @@
-<div class="card mb-4">
-    <div class="card-header">
-      <h2 class="dark">Contact Form</h2>
-    </div>
-    <form #form="ngForm" (ngSubmit)="onSubmit()" class="needs-validation">
-      <div class="card-body">
-      
+<div class="row mb-4 d-flex justify-content-center">
+  <div class="card shadow form">
+    <div class="card-body">
+        <h2 class="card-title dark">Contact Form</h2>
+        <form #form="ngForm" (ngSubmit)="onSubmit()" class="needs-validation">
             <div class="row my-4">
                 <div class="col-md-6 form-group">
                   <label for="firstName">FirstName</label>
@@ -132,25 +130,33 @@
 
             <div class="row my-4">
               <div class="col-12">
-                  <label for="address">Address</label>
+                  <label for="description">Description</label>
                   <textarea 
-                    name="address"
+                    name="description"
                     class="form-control" 
-                    [(ngModel)]="contact.address"
+                    [(ngModel)]="contact.description"
                     #address='ngModel'
                     maxlength="50" 
-                    placeholder="Enter contact address..."></textarea>
+                    placeholder="Enter contact description..."></textarea>
               </div>
           </div>
         
+          <div class="row">
+            <div class="col-12">
+              <button 
+                type="submit"
+                class="btn btn-dark w-100" 
+                [disabled]="form.invalid">
+                  Send
+              </button>
+            </div>
+          </div>
+          
+          </form>
       </div>
-      <div class="card-footer d-flex justify-content-end">
-          <button 
-            type="submit"
-            class="btn btn-dark" 
-            [disabled]="form.invalid">
-            Send</button>
-      </div>
-    </form>
+      
+   
   </div>
+</div>
+
 

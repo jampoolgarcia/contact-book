@@ -1,20 +1,38 @@
 [
     {
-        "name": "jampool",
-        "surname": "garcia ortega",
+        "firstName": "jampool",
+        "lastName": "garcia ortega",
         "description": "frontend Angular developer",
         "sex": "man",
         "email": "jampool@angular.co",
-        "telephone": "4143219874",
+        "phone": "4143219874",
         "company": "angular"
     },
     {
-        "name": "yorgelis",
-        "surname": "rozo rozo",
+        "firstName": "yorgelis",
+        "lastName": "rozo rozo",
         "description": "Ama de casa",
         "sex": "woman",
         "email": "yorgelis@angular.co",
-        "telephone": "4169875642",
+        "phone": "4169875642",
+        "company": "angular"
+    },
+    {
+        "firstName": "yorgelis",
+        "lastName": "rozo rozo",
+        "description": "Ama de casa",
+        "sex": "woman",
+        "email": "yorgelis@angular.co",
+        "phone": "4169875642",
+        "company": "angular"
+    },
+    {
+        "firstName": "yorgelis",
+        "lastName": "rozo rozo",
+        "description": "Ama de casa",
+        "sex": "woman",
+        "email": "yorgelis@angular.co",
+        "phone": "4169875642",
         "company": "angular"
     }
 ]

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ContactService } from 'src/app/services/contact.service';
-import { ContactI } from '../../../interface/contact';
+import { Contact } from '../../../model/contact';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -14,7 +14,7 @@ import Swal from 'sweetalert2';
 export class ContactFormComponent {
 
 
-  public contact!: ContactI;
+  public contact!: Contact;
 
   constructor(
     private _service: ContactService,
@@ -24,15 +24,8 @@ export class ContactFormComponent {
   }
 
   buildingDefaultData(){
-    this.contact = {
-      firstName: '',
-      lastName: '',
-      sex: '',
-      company: '',
-      phone: '',
-      email: '',
-      address: ''
-    }
+    this.contact =  new Contact();
+      
   }
 
   onSubmit(){

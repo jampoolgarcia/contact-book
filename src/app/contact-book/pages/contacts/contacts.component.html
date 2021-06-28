@@ -1,1 +1,15 @@
-<p>contacts works!</p>
+<div class="row justify-content-center">
+    <div 
+        class="card shadow text-center col-12 col-md-4 col-sm-5 col-lg-2 mb-2 mx-2"
+        *ngFor="let contact of contactList">
+        <div class="card-body">
+            <h5 class="card-title dark">{{ contact.fullname }}</h5>
+            <p class="card-text">{{ contact.description }}</p>
+        </div>
+        <div class="card-footer bg-white">
+            <a href="#" class="btn btn-dark w-100">Go details</a>
+        </div>
+    </div>
+</div>
+
+
