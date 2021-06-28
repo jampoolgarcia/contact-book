@@ -1,15 +1,37 @@
-<div class="row justify-content-center">
-    <div 
-        class="card shadow text-center col-12 col-md-4 col-sm-5 col-lg-2 mb-2 mx-2"
-        *ngFor="let contact of contactList">
-        <div class="card-body">
-            <h5 class="card-title dark">{{ contact.fullname }}</h5>
-            <p class="card-text">{{ contact.description }}</p>
+<div class="row d-felx justify-content-center text-center">
+    <div class="col-12">
+        <div class="row text-center mb-3">
+            <h2>Contact List</h2>
         </div>
-        <div class="card-footer bg-white">
-            <a href="#" class="btn btn-dark w-100">Go details</a>
+        <div class="row" *ngIf="contactList.length > 0; else noContact">
+            <div *ngFor="let contact of contactList; index as i"
+                class="col-12 col-md-4 col-sm-6 col-lg-3 mb-2">
+                <div class="card shadow text-center h-100">
+                    <div class="card-body">
+                        <h5 class="card-title dark">{{ contact.fullname | capitalize }}</h5>
+                        <p class="card-text">{{ contact.description }}</p>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <button 
+                            type="button" 
+                            class="btn btn-dark w-100" 
+                            data-bs-toggle="modal" 
+                            data-bs-target="#detailsModal"
+                            (click)="seeDetails(i)">
+                          See more details
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<app-contact-details #details></app-contact-details>
+
+<ng-template #noContact>
+    <h5>No registered contacts</h5>
+</ng-template>
+
 
 

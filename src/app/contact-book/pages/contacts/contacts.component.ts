@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Contact } from 'src/app/model/contact';
 import { ContactService } from 'src/app/services/contact.service';
+import { ContactDetailsComponent } from '../../components/contact-details/contact-details.component';
 
 @Component({
   selector: 'app-contacts',
@@ -11,6 +12,8 @@ import { ContactService } from 'src/app/services/contact.service';
 export class ContactsComponent implements OnInit {
 
   public contactList: Contact[] = [];
+
+  @ViewChild('details') details!: ContactDetailsComponent;
 
   constructor(private _service: ContactService) { }
 
@@ -25,5 +28,11 @@ export class ContactsComponent implements OnInit {
     }
      
   }
+
+  seeDetails(index: number){
+    this.details.contact = this.contactList[index];
+  }
+
+  
 
 }

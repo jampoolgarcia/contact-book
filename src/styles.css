@@ -21,3 +21,8 @@
 .form {
     max-width: 800px !important;
 }
+
+.text-overflow {
+    text-overflow: ellipsis !important;
+    overflow: hidden !important;
+}
