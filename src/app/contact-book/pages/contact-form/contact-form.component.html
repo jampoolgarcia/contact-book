@@ -2,154 +2,155 @@
     <div class="card-header">
       <h2 class="dark">Contact Form</h2>
     </div>
-    <div class="card-body">
-      <form #form="ngForm" class="needs-validation">
-          <div class="row my-4">
-              <div class="col-md-6 form-group">
-                <label for="firstName">FirstName</label>
-                <input 
-                  type="text"
-                  class="form-control is-invalid" 
-                  placeholder="Enter first name..."
-                  name="firstName"
-                  [(ngModel)]="contact.firstName"
-                  #firstName='ngModel' 
-                  minlength="3"
+    <form #form="ngForm" (ngSubmit)="onSubmit()" class="needs-validation">
+      <div class="card-body">
+      
+            <div class="row my-4">
+                <div class="col-md-6 form-group">
+                  <label for="firstName">FirstName</label>
+                  <input 
+                    type="text"
+                    class="form-control is-invalid" 
+                    placeholder="Enter first name..."
+                    name="firstName"
+                    [(ngModel)]="contact.firstName"
+                    #firstName='ngModel' 
+                    minlength="3"
+                    [ngClass]="{
+                                'is-valid': firstName.dirty && !firstName.errors, 
+                                'is-invalid': firstName.dirty && firstName.errors
+                              }" 
+                    required>
+                    <div class="invalid-feedback">
+                      {{ getErrorMsg(firstName.control) }}
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                  <label for="lastName">LastName</label>
+                  <input 
+                  type="text" 
+                  class="form-control" 
+                  placeholder="Enter last name..."
+                  name="lastName" 
+                  [(ngModel)]="contact.lastName"
+                  #lastName='ngModel'
                   [ngClass]="{
-                              'is-valid': firstName.dirty && !firstName.errors, 
-                              'is-invalid': firstName.dirty && firstName.errors
-                            }" 
+                    'is-valid': lastName.dirty && !lastName.errors, 
+                    'is-invalid': lastName.dirty && lastName.errors
+                  }"
+                  minlength="3" 
                   required>
                   <div class="invalid-feedback">
-                    {{ getErrorMsg(firstName.control) }}
+                    {{ getErrorMsg(lastName.control) }}
                   </div>
-              </div>
-              <div class="col-md-6 form-group">
-                <label for="lastName">LastName</label>
-                <input 
-                type="text" 
-                class="form-control" 
-                placeholder="Enter last name..."
-                name="lastName" 
-                [(ngModel)]="contact.lastName"
-                #lastName='ngModel'
-                [ngClass]="{
-                  'is-valid': lastName.dirty && !lastName.errors, 
-                  'is-invalid': lastName.dirty && lastName.errors
-                }"
-                minlength="3" 
-                required>
-                <div class="invalid-feedback">
-                  {{ getErrorMsg(lastName.control) }}
-                </div>
-              </div>
-          </div>
-
-          <div class="row my-4">
-            <div class="col-md-6 col-12">
-                <label for="sex" class="text-muted">Sex</label>
-                <select 
-                  class="form-control" 
-                  [ngClass]="{
-                    'is-valid': sex.dirty && !sex.errors, 
-                    'is-invalid': sex.dirty && sex.errors
-                  }"
-                  name="sex"
-                  [(ngModel)]="contact.sex"
-                  #sex='ngModel'
-                  required>
-                    <option selected value="">Choose...</option>
-                    <option value="man">Man</option>
-                    <option value="woman">Woman</option> 
-                </select>
-                <div class="invalid-feedback">
-                  {{ getErrorMsg(sex.control) }}
                 </div>
             </div>
-            <div class="col-md-6 col-12">
-                <label for="company">Company</label>
-                <input 
-                  type="text"
-                  name="company"
-                  [ngClass]="{
-                    'is-valid': company.dirty && !company.errors
-                  }"
-                  placeholder="Enter company..."
-                  maxlength="20" 
-                  [(ngModel)]="contact.company" 
-                  #company='ngModel'
-                  class="form-control">
-            </div>
-          </div>
 
-          <div class="row my-4">
-            <div class="col-md-6 col-12">
-                <label for="phone">Phone</label>
-                <input 
-                  type="tel" 
-                  placeholder="Enter phone number..."
-                  name="phone"
-                  [ngClass]="{
-                    'is-valid': phone.dirty && !phone.errors,
-                    'is-invalid': phone.dirty && phone.errors
-                  }" 
-                  [(ngModel)]="contact.phone"
-                  #phone='ngModel'
-                  class="form-control"
-                  pattern="^(0034|\+58)?(\d\d\d)-? ?(\d\d\d\d)-? ?(\d\d\d)$" 
-                  required>
-                  <small class="form-text text-muted">
-                    example number phone +584164321987 or 4164321987
-                  </small>
+            <div class="row my-4">
+              <div class="col-md-6 col-12">
+                  <label for="sex" class="text-muted">Sex</label>
+                  <select 
+                    class="form-control" 
+                    [ngClass]="{
+                      'is-valid': sex.dirty && !sex.errors, 
+                      'is-invalid': sex.dirty && sex.errors
+                    }"
+                    name="sex"
+                    [(ngModel)]="contact.sex"
+                    #sex='ngModel'
+                    required>
+                      <option selected value="">Choose...</option>
+                      <option value="man">Man</option>
+                      <option value="woman">Woman</option> 
+                  </select>
                   <div class="invalid-feedback">
-                    {{ getErrorMsg(phone.control) }}
+                    {{ getErrorMsg(sex.control) }}
                   </div>
+              </div>
+              <div class="col-md-6 col-12">
+                  <label for="company">Company</label>
+                  <input 
+                    type="text"
+                    name="company"
+                    [ngClass]="{
+                      'is-valid': company.dirty && !company.errors
+                    }"
+                    placeholder="Enter company..."
+                    maxlength="20" 
+                    [(ngModel)]="contact.company" 
+                    #company='ngModel'
+                    class="form-control">
+              </div>
             </div>
-            <div class="col-md-6 col-12">
-                <label for="email">Email</label>
-                <input 
-                  type="email"
-                  name="email" 
-                  placeholder="Enter email..." 
-                  [(ngModel)]="contact.email"
-                  #email='ngModel'
-                  class="form-control"
-                  [ngClass]="{
-                    'is-valid': email.dirty && !email.errors,
-                    'is-invalid': email.dirty && email.errors
-                  }"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                  required>
-                  <small class="form-text text-muted">
-                    example email example@exam.ple or example@exam.pl
-                  </small>
-                  <div class="invalid-feedback">
-                    {{ getErrorMsg(email.control) }}
-                  </div>
-            </div>
-          </div>
 
-          <div class="row my-4">
-            <div class="col-12">
-                <label for="address">Address</label>
-                <textarea 
-                  name="address"
-                  class="form-control" 
-                  [(ngModel)]="contact.address"
-                  #address='ngModel'
-                  maxlength="50" 
-                  placeholder="Enter contact address..."></textarea>
+            <div class="row my-4">
+              <div class="col-md-6 col-12">
+                  <label for="phone">Phone</label>
+                  <input 
+                    type="tel" 
+                    placeholder="Enter phone number..."
+                    name="phone"
+                    [ngClass]="{
+                      'is-valid': phone.dirty && !phone.errors,
+                      'is-invalid': phone.dirty && phone.errors
+                    }" 
+                    [(ngModel)]="contact.phone"
+                    #phone='ngModel'
+                    class="form-control"
+                    pattern="^(0034|\+58)?(\d\d\d)-? ?(\d\d\d\d)-? ?(\d\d\d)$" 
+                    required>
+                    <div class="invalid-feedback">
+                      {{ getErrorMsg(phone.control) }}
+                    </div>
+                    <small class="form-text text-muted">
+                      example number phone 4164321987.
+                    </small>
+              </div>
+              <div class="col-md-6 col-12">
+                  <label for="email">Email</label>
+                  <input 
+                    type="email"
+                    name="email" 
+                    placeholder="Enter email..." 
+                    [(ngModel)]="contact.email"
+                    #email='ngModel'
+                    class="form-control"
+                    [ngClass]="{
+                      'is-valid': email.dirty && !email.errors,
+                      'is-invalid': email.dirty && email.errors
+                    }"
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    required>
+                    <div class="invalid-feedback">
+                      {{ getErrorMsg(email.control) }}
+                    </div>
+                    <small class="form-text text-muted">
+                      example email example@exam.ple.
+                    </small>
+              </div>
             </div>
-        </div>
-      </form>
-    </div>
-    <div class="card-footer d-flex justify-content-end">
-        <button 
-          type="submit"
-          class="btn btn-dark" 
-          (click)="onSubmit()"
-          [disabled]="form.invalid">
-          Send</button>
-    </div>
+
+            <div class="row my-4">
+              <div class="col-12">
+                  <label for="address">Address</label>
+                  <textarea 
+                    name="address"
+                    class="form-control" 
+                    [(ngModel)]="contact.address"
+                    #address='ngModel'
+                    maxlength="50" 
+                    placeholder="Enter contact address..."></textarea>
+              </div>
+          </div>
+        
+      </div>
+      <div class="card-footer d-flex justify-content-end">
+          <button 
+            type="submit"
+            class="btn btn-dark" 
+            [disabled]="form.invalid">
+            Send</button>
+      </div>
+    </form>
   </div>
 

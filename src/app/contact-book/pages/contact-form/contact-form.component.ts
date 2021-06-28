@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ContactI } from '../../interface/contact';
+import { Router } from '@angular/router';
+import { ContactService } from 'src/app/services/contact.service';
+import { ContactI } from '../../../interface/contact';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact-form',
@@ -8,12 +11,19 @@ import { ContactI } from '../../interface/contact';
   styles: [
   ]
 })
-export class ContactFormComponent implements OnInit {
+export class ContactFormComponent {
 
 
-  public contact: ContactI;
+  public contact!: ContactI;
 
-  constructor() { 
+  constructor(
+    private _service: ContactService,
+    private _router: Router
+    ) { 
+      this.buildingDefaultData();
+  }
+
+  buildingDefaultData(){
     this.contact = {
       firstName: '',
       lastName: '',
@@ -25,15 +35,22 @@ export class ContactFormComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-  }
-
   onSubmit(){
-    console.log(this.contact);
+    if (this._service.addContact(this.contact)) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Your contact has been saved',
+        showConfirmButton: true,
+        confirmButtonColor: '#212529',
+        timer: 2000
+      }).then(res => {
+        this._router.navigate(['list']);
+      })
+    }
+          
   }
 
   getErrorMsg(control: FormControl): string{
-
     if(control.errors?.required){
       return 'The field is required.'
     }else if(control.errors?.minlength){
@@ -41,7 +58,6 @@ export class ContactFormComponent implements OnInit {
     }else if(control.errors?.pattern){
       return 'The field is not in the correct format.'
     }
-
     return '';
   }
 
